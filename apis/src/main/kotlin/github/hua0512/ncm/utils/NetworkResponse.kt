@@ -34,11 +34,7 @@ suspend inline fun <reified T, reified U> ResponseException.serializeAsError(): 
     }
 
 
-suspend inline fun <reified T> HttpResponse.decode(): T {
-    val text = bodyAsText()
-    println("body: $text")
-    return json.decodeFromString<T>(text)
-}
+suspend inline fun <reified T> HttpResponse.decode(): T = json.decodeFromString<T>(bodyAsText())
 
 suspend inline fun <reified T : Any, reified U : Any> Throwable.asNetworkResponse(): NetworkResponse<T, U> =
     when (this) {

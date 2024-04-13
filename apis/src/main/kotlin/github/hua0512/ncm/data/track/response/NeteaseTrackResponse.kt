@@ -1,7 +1,7 @@
-package github.hua0512.ncm.data.song.response
+package github.hua0512.ncm.data.track.response
 
 import github.hua0512.ncm.data.NeteaseResponse
-import github.hua0512.ncm.data.song.NeteaseTrackDownloadInfo
+import github.hua0512.ncm.data.track.NeteaseTrackDownloadInfo
 import kotlinx.serialization.Serializable
 
 /**

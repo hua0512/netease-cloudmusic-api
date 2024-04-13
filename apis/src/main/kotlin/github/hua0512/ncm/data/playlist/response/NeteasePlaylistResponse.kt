@@ -2,8 +2,8 @@ package github.hua0512.ncm.data.playlist.response
 
 import github.hua0512.ncm.data.NeteaseResponse
 import github.hua0512.ncm.data.playlist.NeteasePlaylist
-import github.hua0512.ncm.data.song.NeteaseTrack
-import github.hua0512.ncm.data.song.NeteaseTrackPrivilege
+import github.hua0512.ncm.data.track.NeteaseTrack
+import github.hua0512.ncm.data.track.NeteaseTrackPrivilege
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -1,6 +1,17 @@
 package github.hua0512.ncm.apis.base
 
 import github.hua0512.ncm.apis.CookiesProvider
+import github.hua0512.ncm.apis.base.NeteaseHeaders.MUSIC_A
+import github.hua0512.ncm.apis.base.NeteaseHeaders.MUSIC_U
+import github.hua0512.ncm.apis.base.NeteaseHeaders.NMTID
+import github.hua0512.ncm.apis.base.NeteaseHeaders.NUID
+import github.hua0512.ncm.apis.base.NeteaseHeaders.REMEMBER_ME
+import github.hua0512.ncm.apis.base.NeteaseHeaders.X_REAL_IP
+import github.hua0512.ncm.apis.base.NeteaseSubHeaders.APP_VER
+import github.hua0512.ncm.apis.base.NeteaseSubHeaders.APP_VER_STRING
+import github.hua0512.ncm.apis.base.NeteaseSubHeaders.CSRF_TOKEN
+import github.hua0512.ncm.apis.base.NeteaseSubHeaders.IOS
+import github.hua0512.ncm.apis.base.NeteaseSubHeaders.OS
 import github.hua0512.ncm.data.RequestMode
 import github.hua0512.ncm.data.UserAgent
 import github.hua0512.ncm.utils.eapiEncrypt
@@ -11,7 +22,6 @@ import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.util.*
-import kotlinx.datetime.Clock
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 
@@ -21,7 +31,7 @@ abstract class BaseNeteaseNetworkImpl(open val client: HttpClient) {
         const val BASE_URL = "https://music.163.com"
         const val INTERFACE_BASE_URL = "https://interface3.music.163.com"
         const val REAL_IP = "211.161.244.70"
-        const val X_REAL_IP = "X-Real-IP"
+
     }
 
 
@@ -116,21 +126,21 @@ abstract class BaseNeteaseNetworkImpl(open val client: HttpClient) {
             append(HttpHeaders.XForwardedFor, REAL_IP)
         }
 
-        CookiesProvider.addIfNotExists("_ntes_nuid", generateRandomHex(16))
+        CookiesProvider.addIfNotExists(NUID, generateRandomHex(16))
         if (fullPath.indexOf("login") == -1) {
-            CookiesProvider.addIfNotExists("NMTID", generateRandomHex(16))
+            CookiesProvider.addIfNotExists(NMTID, generateRandomHex(16))
         }
 
-        if (CookiesProvider.getCookie("MUSIC_U") == null) {
+        if (CookiesProvider.getCookie(MUSIC_U) == null) {
             // guest mode
-            if (CookiesProvider.getCookie("MUSIC_A") == null) {
+            if (CookiesProvider.getCookie(MUSIC_A) == null) {
                 // TODO: IMPLEMENT GUEST MODE
 //                CookiesProvider.addCookie("MUSIC_A", generateRandomHex(16))
-                CookiesProvider.addIfNotExists("os", "ios")
-                CookiesProvider.addIfNotExists("appver", "8.20.21")
+                CookiesProvider.addIfNotExists(OS, IOS)
+                CookiesProvider.addIfNotExists(APP_VER, APP_VER_STRING)
             }
         } else {
-            CookiesProvider.addIfNotExists("__remember_me", "true")
+            CookiesProvider.addIfNotExists(REMEMBER_ME, "true")
         }
         when (mode) {
             RequestMode.WEAPI -> {
@@ -138,7 +148,7 @@ abstract class BaseNeteaseNetworkImpl(open val client: HttpClient) {
                     this@setNeteaseRequest.url.parameters.build().toMap().forEach { (key, value) ->
                         put(key, value.joinToString(","))
                     }
-                    put("__csrf", CookiesProvider.getCookie("__csrf") ?: "")
+                    put(CSRF_TOKEN, CookiesProvider.getCookie(CSRF_TOKEN) ?: "")
                 }
                 val encText = weapiEncrypt(jsonObject)
                 this.url.parameters.clear()
@@ -156,24 +166,9 @@ abstract class BaseNeteaseNetworkImpl(open val client: HttpClient) {
                         put(key, value)
                     }
                     val header = buildJsonObject {
-                        put("csrfToken", CookiesProvider.getCookie("__csrf") ?: "")
-                        put("osver", CookiesProvider.getCookie("osver") ?: "17,1,2")
-                        put("appver", CookiesProvider.getCookie("appver") ?: "8.20.21")
-                        put("versioncode", CookiesProvider.getCookie("versioncode") ?: "140")
-                        CookiesProvider.getCookie("deviceId")?.let { put("deviceId", it) }
-                        CookiesProvider.getCookie("mobilename")?.let { put("mobilename", it) }
-                        CookiesProvider.getCookie("channel")?.let { put("channel", it) }
-                        put("buildver", CookiesProvider.getCookie("buildver") ?: Clock.System.now().epochSeconds.toString())
-                        put("os", "ios")
-                        put("resolution", CookiesProvider.getCookie("resolution") ?: "1920x1080")
-                        put(
-                            "requestId",
-                            CookiesProvider.getCookie("uniqueId") ?: "${System.currentTimeMillis()}_${
-                                (0 until 1000).random().toString().padStart(4, '0')
-                            }"
-                        )
-                        CookiesProvider.getCookie("MUSIC_A")?.let { put("MUSIC_A", it) }
-                        CookiesProvider.getCookie("MUSIC_U")?.let { put("MUSIC_U", it) }
+                        NeteaseSubHeaders.getHeaders(CookiesProvider).forEach { (key, value) ->
+                            put(key, value)
+                        }
                     }
                     put("header", header)
                 }

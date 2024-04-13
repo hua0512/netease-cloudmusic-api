@@ -5,8 +5,8 @@ import github.hua0512.ncm.apis.base.BaseNeteaseNetworkImpl
 import github.hua0512.ncm.apis.base.NetworkResponse
 import github.hua0512.ncm.data.FailedResponse
 import github.hua0512.ncm.data.RequestMode
-import github.hua0512.ncm.data.song.NeteaseTrackLevel
-import github.hua0512.ncm.data.song.response.NeteaseTrackResponse.NeteaseTracksInfoResponse
+import github.hua0512.ncm.data.track.NeteaseTrackLevel
+import github.hua0512.ncm.data.track.response.NeteaseTrackResponse.NeteaseTracksInfoResponse
 import io.ktor.client.*
 import io.ktor.client.request.*
 
@@ -19,7 +19,7 @@ class NeteaseTrackImpl(client: HttpClient) : BaseNeteaseNetworkImpl(client), ITr
 
     override suspend fun getTracksUrl(ids: List<String>, br: Long?): NetworkResponse<NeteaseTracksInfoResponse, FailedResponse> {
         CookiesProvider.addIfNotExists("os", "pc")
-        return postApi(baseUrl = INTERFACE_BASE_URL, pathName = "/api/song/enhance/player/url", mode = RequestMode.EAPI) {
+        return postApi(baseUrl = INTERFACE_BASE_URL, pathName = "/api/track/enhance/player/url", mode = RequestMode.EAPI) {
             parameter("ids", idsString(ids))
             parameter("br", br ?: 999000)
         }
@@ -28,7 +28,7 @@ class NeteaseTrackImpl(client: HttpClient) : BaseNeteaseNetworkImpl(client), ITr
     override suspend fun getTracksUrlV1(ids: List<String>, level: NeteaseTrackLevel?): NetworkResponse<NeteaseTracksInfoResponse, FailedResponse> {
         CookiesProvider.addIfNotExists("os", "android")
         CookiesProvider.addIfNotExists("appver", "8.10.05")
-        return postApi(baseUrl = INTERFACE_BASE_URL, pathName = "/api/song/enhance/player/url/v1", mode = RequestMode.EAPI) {
+        return postApi(baseUrl = INTERFACE_BASE_URL, pathName = "/api/track/enhance/player/url/v1", mode = RequestMode.EAPI) {
             parameter("ids", idsString(ids))
             parameter("level", level?.level ?: NeteaseTrackLevel.EXHIGH.level)
             parameter("encodeType", "flac")
@@ -39,7 +39,7 @@ class NeteaseTrackImpl(client: HttpClient) : BaseNeteaseNetworkImpl(client), ITr
     }
 
     override suspend fun isPlayable(ids: List<String>, br: Long?): NetworkResponse<NeteaseTracksInfoResponse, FailedResponse> {
-        return postApi<NeteaseTracksInfoResponse, FailedResponse>(pathName = "/weapi/song/enhance/player/url") {
+        return postApi<NeteaseTracksInfoResponse, FailedResponse>(pathName = "/weapi/track/enhance/player/url") {
             parameter("ids", idsString(ids))
             parameter("br", br ?: 999000)
         }.run {

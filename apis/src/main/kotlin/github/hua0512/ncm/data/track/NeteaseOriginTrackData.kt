@@ -1,5 +1,6 @@
-package github.hua0512.ncm.data.song
+package github.hua0512.ncm.data.track
 
+import github.hua0512.ncm.data.artist.NeteaseBaseArtist
 import kotlinx.serialization.Serializable
 
 /**
@@ -10,7 +11,7 @@ import kotlinx.serialization.Serializable
 data class NeteaseOriginTrackData(
     val songId: Long,
     val name: String,
-    val artists: List<NeteaseArtist>,
+    val artists: List<NeteaseBaseArtist>,
     val albumMeta: NeteaseMusicAlbum,
 )
 

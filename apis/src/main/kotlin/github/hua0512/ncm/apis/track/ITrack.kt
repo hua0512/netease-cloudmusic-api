@@ -3,8 +3,8 @@ package github.hua0512.ncm.apis.track
 import github.hua0512.ncm.apis.base.INeteaseApi
 import github.hua0512.ncm.apis.base.NetworkResponse
 import github.hua0512.ncm.data.FailedResponse
-import github.hua0512.ncm.data.song.NeteaseTrackLevel
-import github.hua0512.ncm.data.song.response.NeteaseTrackResponse.NeteaseTracksInfoResponse
+import github.hua0512.ncm.data.track.NeteaseTrackLevel
+import github.hua0512.ncm.data.track.response.NeteaseTrackResponse.NeteaseTracksInfoResponse
 
 /**
  * @author hua0512

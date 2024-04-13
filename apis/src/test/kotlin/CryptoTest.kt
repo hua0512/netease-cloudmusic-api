@@ -46,30 +46,4 @@ class CryptoTest {
 """.trimIndent(), encrypted
         )
     }
-
-    @Test
-    fun tests() {
-        val cookies =
-            """MUSIC_SNS=; Max-Age=0; Expires=Sun, 31 Mar 2024 20:32:38 GMT; Path=/; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/api/clientlog; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/openapi/clientlog; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/neapi/feedback; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/wapi/feedback; Domain=.music.163.com; __remember_me=true; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/; Domain=.music.163.com; NMTID=00Oq-qG3F3YnzHNKU-MtetexKYxdkQAAAGOljbRIQ; Max-Age=315360000; Expires=Wed, 29 Mar 2034 20:32:38 GMT; Path=/; Domain=music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/wapi/feedback; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/weapi/feedback; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/wapi/clientlog; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/eapi/clientlog; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/eapi/clientlog; Domain=.music.163.com; __csrf=7bb6939134b685281a7a601e3030f76c; Max-Age=1296010; Expires=Mon, 15 Apr 2024 20:32:48 GMT; Path=/; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/neapi/feedback; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/api/clientlog; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/weapi/clientlog; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/eapi/feedback; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/openapi/clientlog; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/weapi/clientlog; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/wapi/clientlog; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/neapi/clientlog; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/api/feedback; Domain=.music.163.com; MUSIC_U=004C89B76C167E5526687AF7F0CE23D66626F79B84226769B33F23FA3D49C3E2A83154288326E665770E0B539E905D36736664278D47F78B5852F703A75063C5CBCA6C562AF332C68F5B45A3653CBDD9759BDE431C600CE3343E4700DB6F376031E7688D0FBEB1BCF7FB520FCA3EB49C17CC75C7F26E5122D80B813360CB5124DFEEFB4210C02D32A383667DBF05DDB649ACBEF6862B26700898BA92AC887EF7A8DD0438E138DD6EDC5CFD3F2ABEDE4953131DF39403E122518FE01F8460EA59F1EEACCD25BC4FB59E0310CEFCA3F559D4DC7C8B2DE99932FD17A43F45F2A1C11AEEF6669FF2808450FC8A69EF99ADD30A1DC5B50EE43C63803B8FED961529C30416495AD856F24D7F4D602657EFEB27ED2D5952D624701DCEC285EF6E728668E7A4091EB0E4EB7E2FEAD80ECD877C6860FB248E25E94FC4BD62DE3EFBCB533018D54FDB5D818C1C311493F5477A919F89; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/neapi/clientlog; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/eapi/feedback; Domain=.music.163.com; MUSIC_R_T=1682676397649; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/weapi/feedback; Domain=.music.163.com; MUSIC_A_T=1682676397428; Max-Age=2147483647; Expires=Fri, 18 Apr 2092 23:46:45 GMT; Path=/api/feedback; Domain=.music.163.com"""
-        val regex = Regex("""/\s*Domain=[^(;|${'$'})]+;*/""")
-        val result = cookies.replace(regex, "")
-
-        // parse all cookies
-        val cookiesList = mutableListOf<Cookie>()
-
-        parseServerSetCookieHeader(cookies).also {
-
-            it.toString().also {
-                println(it)
-            }
-
-            val extensions = it.extensions
-            cookiesList.add(Cookie(it.name, it.value, it.encoding, it.maxAge, it.expires, it.domain, it.path, it.secure, it.httpOnly))
-            extensions.forEach { (t, u) ->
-                cookiesList.add(Cookie(t, u ?: "", it.encoding, it.maxAge, it.expires, it.domain, it.path, it.secure, it.httpOnly))
-            }
-        }
-
-        println(result)
-    }
 }

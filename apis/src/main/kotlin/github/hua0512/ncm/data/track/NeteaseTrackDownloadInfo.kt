@@ -1,4 +1,4 @@
-package github.hua0512.ncm.data.song
+package github.hua0512.ncm.data.track
 
 import github.hua0512.ncm.data.NeteaseResponse
 import kotlinx.serialization.Serializable

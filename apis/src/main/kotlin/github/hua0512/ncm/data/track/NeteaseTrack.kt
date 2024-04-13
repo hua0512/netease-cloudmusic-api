@@ -1,8 +1,10 @@
-package github.hua0512.ncm.data.song
+package github.hua0512.ncm.data.track
 
 
+import github.hua0512.ncm.data.artist.NeteaseBaseArtist
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 @Serializable
 data class NeteaseTrack(
@@ -16,10 +18,10 @@ data class NeteaseTrack(
     @SerialName("alia")
     val alia: List<String>? = emptyList(),
     @SerialName("ar")
-    val artists: List<NeteaseArtist>,
+    val artists: List<NeteaseBaseArtist>,
     @SerialName("awardTags")
     val awardTags: List<String>? = emptyList(),
-    @SerialName("cd")
+    @JsonNames("cd", "disc")
     val cd: String,
     @SerialName("cf")
     val cf: String,
