@@ -1,11 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    alias(libs.plugins.kotlin.jvm)
+    // this is necessary to avoid the plugins to be loaded multiple times
+    // in each subproject's classloader
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.kotlinMultiplatform) apply false
 }
-
-group = "github.hua0512.streamrec"
-version = "1.0-SNAPSHOT"
 
 allprojects {
     tasks.withType<KotlinCompile>().configureEach {
@@ -17,14 +18,13 @@ allprojects {
             arguments += "-Xno-call-assertions"
             arguments += "-Xno-param-assertions"
             arguments += "-Xno-receiver-assertions"
+            arguments += "-Xexpect-actual-classes"
             arguments += "-opt-in=kotlin.RequiresOptIn"
+            arguments += "-opt-in=kotlin.ExperimentalStdlibApi"
             freeCompilerArgs.addAll(arguments)
         }
         kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_17.toString()
+            jvmTarget = JavaVersion.VERSION_11.toString()
         }
-    }
-    tasks.withType<JavaCompile>().configureEach {
-        options.isFork = true
     }
 }
