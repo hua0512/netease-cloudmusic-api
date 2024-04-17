@@ -66,4 +66,15 @@ sealed class NeteaseSearchResponse : NeteaseResponse() {
         @SerialName("hasMore")
         val hasMore: Boolean? = false
     ) : NeteaseSearchResponse()
+
+
+    @Serializable
+    data class Lyrics(
+        @SerialName("songs")
+        val tracks: List<NeteaseSearchTrack>,
+        @SerialName("songCount")
+        val tracksCount: Int,
+        @SerialName("hasMore")
+        val hasMore: Boolean? = false
+    ) : NeteaseSearchResponse()
 }

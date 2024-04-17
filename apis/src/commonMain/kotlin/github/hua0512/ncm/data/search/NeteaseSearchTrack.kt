@@ -3,6 +3,7 @@ package github.hua0512.ncm.data.search
 import github.hua0512.ncm.data.album.NeteaseAlbumArtistsDetailed
 import github.hua0512.ncm.data.album.NeteaseAlbumDetailed
 import github.hua0512.ncm.data.artist.NeteaseArtistDetailed
+import github.hua0512.ncm.data.lyric.NeteaseBaseLyric
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -39,7 +40,11 @@ data class NeteaseSearchTrack(
     @SerialName("rtype")
     val rtype: Int = 0,
     @SerialName("status")
-    val status: Int
+    val status: Int,
+    @SerialName("transNames")
+    val transNames: List<String>? = null,
+    @SerialName("lyrics")
+    val lyrics: NeteaseBaseLyric? = null,
 )
 
 

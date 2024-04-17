@@ -2,8 +2,8 @@ package github.hua0512.ncm.data.track
 
 
 import github.hua0512.ncm.data.album.NeteaseAlbumDetailed
-import github.hua0512.ncm.data.artist.NeteaseArtistDetailed
 import github.hua0512.ncm.data.artist.NeteaseBaseArtist
+import github.hua0512.ncm.data.lyric.NeteaseBaseLyric
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonNames
@@ -18,7 +18,7 @@ data class NeteaseTrack(
     @SerialName("audition")
     val audition: String? = null,
     @SerialName("al")
-    val al: NeteaseAlbumDetailed? = null,
+    val album: NeteaseAlbumDetailed? = null,
     @SerialName("alia")
     val alia: List<String>? = emptyList(),
     @JsonNames("ar", "artists")
@@ -131,4 +131,6 @@ data class NeteaseTrack(
     val commentThreadId: String? = null,
     @SerialName("mp3Url")
     val mp3Url: String? = null,
+    @SerialName("lyrics")
+    val lyrics: NeteaseBaseLyric? = null,
 )
