@@ -4,6 +4,7 @@ import github.hua0512.ncm.data.NeteaseResponse
 import github.hua0512.ncm.data.account.NeteaseProfile
 import github.hua0512.ncm.data.album.NeteaseAlbumDetailed
 import github.hua0512.ncm.data.artist.NeteaseArtistDetailed
+import github.hua0512.ncm.data.mv.NeteaseBaseVideo
 import github.hua0512.ncm.data.playlist.NeteaseBasePlaylist
 import github.hua0512.ncm.data.playlist.NeteasePlaylist
 import kotlinx.serialization.SerialName
@@ -53,5 +54,16 @@ sealed class NeteaseSearchResponse : NeteaseResponse() {
         @SerialName("userprofileCount")
         val userCount: Int,
         val hasMore: Boolean
+    ) : NeteaseSearchResponse()
+
+
+    @Serializable
+    data class Mvs(
+        @SerialName("mvs")
+        val mvs: List<NeteaseBaseVideo>,
+        @SerialName("mvCount")
+        val mvCount: Int,
+        @SerialName("hasMore")
+        val hasMore: Boolean? = false
     ) : NeteaseSearchResponse()
 }

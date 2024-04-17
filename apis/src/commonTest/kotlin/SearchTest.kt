@@ -48,4 +48,11 @@ class SearchTest : BaseNetworkTest() {
         assertTrue(response is NetworkResponse.Success)
         println(pprint(response.body))
     }
+
+    @Test
+    fun testSearchMv() = runTest {
+        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.MV)
+        assertTrue(response is NetworkResponse.Success)
+        println(pprint(response.body))
+    }
 }
