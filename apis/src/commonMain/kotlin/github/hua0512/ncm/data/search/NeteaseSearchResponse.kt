@@ -1,10 +1,12 @@
 package github.hua0512.ncm.data.search
 
 import github.hua0512.ncm.data.NeteaseResponse
+import github.hua0512.ncm.data.account.NeteaseProfile
 import github.hua0512.ncm.data.album.NeteaseAlbumDetailed
 import github.hua0512.ncm.data.artist.NeteaseArtistDetailed
 import github.hua0512.ncm.data.playlist.NeteaseBasePlaylist
 import github.hua0512.ncm.data.playlist.NeteasePlaylist
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
@@ -41,6 +43,15 @@ sealed class NeteaseSearchResponse : NeteaseResponse() {
     data class Playlists(
         val playlists: List<NeteaseBasePlaylist>,
         val playlistCount: Int,
+        val hasMore: Boolean
+    ) : NeteaseSearchResponse()
+
+    @Serializable
+    data class Users(
+        @SerialName("userprofiles")
+        val users: List<NeteaseProfile>,
+        @SerialName("userprofileCount")
+        val userCount: Int,
         val hasMore: Boolean
     ) : NeteaseSearchResponse()
 }
