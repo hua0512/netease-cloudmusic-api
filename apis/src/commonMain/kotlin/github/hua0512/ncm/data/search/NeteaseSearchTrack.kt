@@ -1,5 +1,7 @@
 package github.hua0512.ncm.data.search
 
+import github.hua0512.ncm.data.album.NeteaseAlbumArtistsDetailed
+import github.hua0512.ncm.data.album.NeteaseAlbumDetailed
 import github.hua0512.ncm.data.artist.NeteaseArtistDetailed
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -11,7 +13,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class NeteaseSearchTrack(
     @SerialName("album")
-    val album: NeteaseSearchAlbum,
+    val album: NeteaseAlbumArtistsDetailed,
     @SerialName("alias")
     val alias: List<String>? = null,
     @SerialName("artists")

@@ -144,7 +144,7 @@ class PlaylistImpl(client: HttpClient) : BaseNeteaseNetworkImpl(client), IPlayli
                 val ids = trackIds.slice((offset ?: 0) until (offset ?: 0) + (limit ?: trackIds.size))
                 // convert to map
                 val map = ids.map { mapOf("id" to it) }
-                return postApi(pathName = "/api/v3/track/detail") {
+                return postApi(pathName = "/api/v3/song/detail") {
                     parameter("c", json.encodeToString(map))
                 }
             }

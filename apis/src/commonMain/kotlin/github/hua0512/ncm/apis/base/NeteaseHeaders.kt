@@ -10,7 +10,7 @@ import kotlinx.datetime.Clock
  * @date : 2024/4/13 22:20
  */
 
-object NeteaseHeaders {
+internal object NeteaseHeaders {
     const val MUSIC_U = "MUSIC_U"
     const val MUSIC_A = "MUSIC_A"
     const val NUID = "_ntes_nuid"
@@ -21,21 +21,21 @@ object NeteaseHeaders {
 
 }
 
-object NeteaseSubHeaders {
-    internal const val CSRF_TOKEN = "__csrf"
-    internal const val OS = "os"
-    internal const val OS_VER = "osver"
-    internal const val APP_VER = "appver"
-    internal const val VERSION_CODE = "versioncode"
-    internal const val BUILD_VER = "buildver"
-    internal const val RESOLUTION = "resolution"
-    internal const val REQUEST_ID = "requestId"
-    internal const val DEVICE_ID = "deviceId"
-    internal const val MOBILE_NAME = "mobilename"
-    internal const val CHANNEL = "channel"
+internal object NeteaseSubHeaders {
+    const val CSRF_TOKEN = "__csrf"
+    const val OS = "os"
+    const val OS_VER = "osver"
+    const val APP_VER = "appver"
+    const val VERSION_CODE = "versioncode"
+    const val BUILD_VER = "buildver"
+    const val RESOLUTION = "resolution"
+    const val REQUEST_ID = "requestId"
+    const val DEVICE_ID = "deviceId"
+    const val MOBILE_NAME = "mobilename"
+    const val CHANNEL = "channel"
 
-    internal const val APP_VER_STRING = "8.20.21"
-    internal const val IOS = "ios"
+    const val APP_VER_STRING = "8.20.21"
+    const val IOS = "ios"
 
 
     fun getHeaders(provider: CookiesProvider): Map<String, String> {

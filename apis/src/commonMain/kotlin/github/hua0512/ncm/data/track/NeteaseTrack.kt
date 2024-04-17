@@ -1,6 +1,8 @@
 package github.hua0512.ncm.data.track
 
 
+import github.hua0512.ncm.data.album.NeteaseAlbumDetailed
+import github.hua0512.ncm.data.artist.NeteaseArtistDetailed
 import github.hua0512.ncm.data.artist.NeteaseBaseArtist
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -13,70 +15,76 @@ data class NeteaseTrack(
      */
     @SerialName("a")
     val a: String? = null,
+    @SerialName("audition")
+    val audition: String? = null,
     @SerialName("al")
-    val al: NeteaseMusicAlbum? = null,
+    val al: NeteaseAlbumDetailed? = null,
     @SerialName("alia")
     val alia: List<String>? = emptyList(),
-    @SerialName("ar")
+    @JsonNames("ar", "artists")
     val artists: List<NeteaseBaseArtist>,
     @SerialName("awardTags")
     val awardTags: List<String>? = emptyList(),
     @JsonNames("cd", "disc")
     val cd: String,
     @SerialName("cf")
-    val cf: String,
+    val cf: String? = null,
     @SerialName("copyright")
     val copyright: Int,
+    @SerialName("copyrightId")
+    val copyrightId: Int? = 0,
     @SerialName("cp")
-    val cp: Int,
+    val cp: Int? = 0,
     @SerialName("crbt")
     val crbt: String? = null,
     @SerialName("djId")
-    val djId: Int,
-    @SerialName("dt")
-    val dt: Int,
+    val djId: Int? = 0,
+    @JsonNames("dt", "duration")
+    val duration: Int,
     @SerialName("entertainmentTags")
     val entertainmentTags: List<String>? = emptyList(),
     @SerialName("fee")
     val fee: Int,
     @SerialName("ftype")
     val ftype: Int,
-    @SerialName("h")
+    @JsonNames("h", "hMusic")
     val highQuality: NeteaseTrackQuality? = null,
     @SerialName("hr")
     val highResolution: NeteaseTrackQuality? = null,
     @SerialName("id")
     val id: Int,
-    @SerialName("l")
+    @JsonNames("l", "lMusic")
     val lowQuality: NeteaseTrackQuality? = null,
-    @SerialName("m")
+    @JsonNames("m", "mMusic")
     val mediumQuality: NeteaseTrackQuality? = null,
+    @JsonNames("b", "bMusic")
+    val baseQuality: NeteaseTrackQuality? = null,
     @SerialName("mark")
-    val mark: Long,
+    val mark: Long? = 0,
     @SerialName("mst")
-    val mst: Int,
-    @SerialName("mv")
+    val mst: Int? = 0,
+    @JsonNames("mv", "mvid")
     val mv: Int,
     @SerialName("name")
     val name: String,
     @SerialName("no")
     val no: Int,
     @SerialName("noCopyrightRcmd")
-    val noCopyrightRcmd: String?,
+    val noCopyrightRcmd: String? = null,
     @SerialName("originCoverType")
-    val originCoverType: Int,
+    val originCoverType: Int? = 0,
     @SerialName("originSongSimpleData")
     val originSongSimpleData: NeteaseOriginTrackData? = null,
-    @SerialName("pop")
-    val pop: Double,
+    @JsonNames("pop", "popularity")
+    val popularity: Double,
     @SerialName("pst")
-    val pst: Int,
+    val pst: Int? = 0,
     @SerialName("publishTime")
-    val publishTime: Long,
+    val publishTime: Long? = 0,
     @SerialName("resourceState")
-    val resourceState: Boolean,
+    val resourceState: Boolean? = false,
     @SerialName("rt")
-    val rt: String,
+    val rt: String? = null,
     @SerialName("rtUrl")
     val rtUrl: String?,
     @SerialName("rtUrls")
@@ -86,23 +94,41 @@ data class NeteaseTrack(
     @SerialName("rurl")
     val rurl: String?,
     @SerialName("s_id")
-    val sId: Int,
+    val sId: Int? = 0,
     @SerialName("single")
-    val single: Int,
+    val single: Int? = 0,
     @SerialName("songJumpInfo")
-    val songJumpInfo: String?,
+    val songJumpInfo: String? = null,
     @SerialName("sq")
-    val superQuality: NeteaseTrackQuality,
-    @SerialName("st")
-    val st: Int,
+    val superQuality: NeteaseTrackQuality? = null,
+    @JsonNames("st", "status")
+    val status: Int,
     @SerialName("t")
-    val t: Int,
+    val t: Int? = 0,
     @SerialName("tagPicList")
     val tagPicList: List<String>? = emptyList(),
     @SerialName("tns")
     val tns: List<String>? = emptyList(),
-    @SerialName("v")
-    val v: Int,
-    @SerialName("version")
-    val version: Int
+    @JsonNames("v", "version")
+    val version: Int? = 0,
+    @SerialName("position")
+    val position: Int? = 0,
+    @SerialName("starred")
+    val starred: Boolean? = false,
+    @SerialName("score")
+    val score: Int? = null,
+    @SerialName("starredNum")
+    val starredNum: Int? = 0,
+    @SerialName("playedNum")
+    val playedNum: Int? = 0,
+    @SerialName("dayPlays")
+    val dayPlays: Int? = 0,
+    @SerialName("hearTime")
+    val hearTime: Int? = 0,
+    @SerialName("ringtone")
+    val ringtone: String? = null,
+    @SerialName("commentThreadId")
+    val commentThreadId: String? = null,
+    @SerialName("mp3Url")
+    val mp3Url: String? = null,
 )

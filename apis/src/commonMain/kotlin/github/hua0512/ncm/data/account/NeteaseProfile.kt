@@ -10,15 +10,9 @@ data class NeteaseProfile(
     val backgroundUrl: String? = "",
     val backgroundImgIdStr: String? = "",
     val vipType: Int = 0,
-    val authStatus: Int = 0,
     val djStatus: Int = 0,
     val detailDescription: String? = "",
-//    @Transient
-//    val experts: Any? = null,
-//    @Transient
-    val expertTags: List<String>? = emptyList(),
     val accountStatus: Int = 0,
-    val nickname: String? = "",
     /**
      * Birthday, can be negative if not set
      * -2209017600000
@@ -29,13 +23,10 @@ data class NeteaseProfile(
     val city: Int = 1006600,
     val avatarImgId: Long = 0,
     val backgroundImgId: Long = 0,
-    val avatarUrl: String? = "",
-    val userType: Int = 0,
     val defaultAvatar: Boolean = false,
     val mutual: Boolean = false,
     val remarkName: String? = "",
     val description: String? = "",
-    val userId: Long,
     val signature: String? = "",
     val authority: Int = 0,
     val followeds: Int = 0,
@@ -53,4 +44,4 @@ data class NeteaseProfile(
     val privacyItemUnlimited: NeteaseUserPrivacy? = null,
     val blacklist: Boolean? = false,
     val anchor: Boolean? = false,
-)
+) : NeteaseBaseProfile()

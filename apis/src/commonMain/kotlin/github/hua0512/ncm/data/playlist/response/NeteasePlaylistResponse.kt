@@ -53,6 +53,7 @@ sealed class NeteasePlaylistResponse : NeteaseResponse() {
 
     @Serializable
     data class PlaylistDetail(
+        val playlist: NeteasePlaylist? = null,
         val privileges: List<NeteaseTrackPrivilege>? = emptyList(),
         val relatedVideos: List<String>? = null,
         val urls: List<String>? = null,
@@ -60,7 +61,6 @@ sealed class NeteasePlaylistResponse : NeteaseResponse() {
         val fromUsers: List<String>? = null,
         val fromUsersCount: Int? = null,
         val songFromUsers: List<String>? = null,
-        var playlist: NeteasePlaylist? = null,
     ) : NeteaseResponse()
 
     @Serializable

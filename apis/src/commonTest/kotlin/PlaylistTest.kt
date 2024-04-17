@@ -1,7 +1,9 @@
+import github.hua0512.ncm.apis.base.NetworkResponse
 import github.hua0512.ncm.apis.playlist.PlaylistImpl
 import io.exoquery.kmp.pprint
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
+import kotlin.test.assertTrue
 
 
 class PlaylistTest : BaseNetworkTest() {
@@ -48,13 +50,15 @@ class PlaylistTest : BaseNetworkTest() {
     @Test
     fun testGetPlaylistDetail() = runTest {
         val info = impl.getPlaylistDetail("8280551582")
-        println(info)
+        assertTrue(info is NetworkResponse.Success)
+        println(pprint(info.body))
     }
 
     @Test
     fun testGetPlaylistTracks() = runTest {
         val info = impl.getPlaylistTracks("8280551582")
-        println(info)
+        assertTrue(info is NetworkResponse.Success)
+        println(pprint(info.body))
     }
 
     @Test

@@ -9,7 +9,6 @@ import io.ktor.client.*
 
 class CountryImpl(client: HttpClient) : BaseNeteaseNetworkImpl(client), ICountry {
 
-    override suspend fun getCountriesCode(): NetworkResponse<NeteaseCountryResponse, FailedResponse> {
-        return postApi(baseUrl = INTERFACE_BASE_URL, pathName = "/api/lbs/countries/v1", mode = RequestMode.EAPI)
-    }
+    override suspend fun getCountriesCode(): NetworkResponse<NeteaseCountryResponse, FailedResponse> =
+        postApi(baseUrl = INTERFACE_BASE_URL, pathName = "/api/lbs/countries/v1", mode = RequestMode.EAPI)
 }

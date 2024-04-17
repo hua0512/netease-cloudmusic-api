@@ -1,5 +1,6 @@
 package github.hua0512.ncm.data.playlist
 
+import github.hua0512.ncm.data.account.NeteaseBaseProfile
 import github.hua0512.ncm.data.account.NeteaseProfile
 import github.hua0512.ncm.data.track.NeteaseTrack
 import github.hua0512.ncm.data.track.NeteaseTrackIdInfo
@@ -19,13 +20,17 @@ data class NeteasePlaylist(
     val coverImgId: Long,
     @SerialName("coverImgId_str")
     val coverImgIdStr: String,
+    @SerialName("coverImgUrl")
     val coverImgUrl: String,
     val createTime: Long,
+    @SerialName("creator")
     val creator: NeteaseProfile,
     val description: String? = null,
     val englishTitle: String? = null,
     val highQuality: Boolean = false,
+    @SerialName("id")
     val id: Long,
+    @SerialName("name")
     val name: String,
     val newImported: Boolean,
     val opRecommend: Boolean = false,
@@ -55,7 +60,6 @@ data class NeteasePlaylist(
     val trackIds: List<NeteaseTrackIdInfo>? = emptyList(),
     val updateFrequency: String? = null,
     val updateTime: Long,
-    val userId: Long,
     val coverStatus: Int? = null,
     val socialPlaylistCover: String? = null,
     val copywriter: String? = null,
@@ -64,4 +68,4 @@ data class NeteasePlaylist(
     val relatedResType: Int? = null,
     val videoIds: List<String>? = emptyList(),
     val videos: List<String>? = emptyList(),
-)
+) : NeteaseBaseProfile()

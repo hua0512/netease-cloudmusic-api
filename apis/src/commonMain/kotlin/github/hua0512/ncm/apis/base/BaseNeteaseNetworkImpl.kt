@@ -12,14 +12,18 @@ import github.hua0512.ncm.apis.base.NeteaseSubHeaders.APP_VER_STRING
 import github.hua0512.ncm.apis.base.NeteaseSubHeaders.CSRF_TOKEN
 import github.hua0512.ncm.apis.base.NeteaseSubHeaders.IOS
 import github.hua0512.ncm.apis.base.NeteaseSubHeaders.OS
+import github.hua0512.ncm.data.FailedResponse
 import github.hua0512.ncm.data.RequestMode
 import github.hua0512.ncm.data.UserAgent
-import github.hua0512.ncm.utils.*
-import io.exoquery.kmp.pprint
+import github.hua0512.ncm.utils.eapiEncrypt
+import github.hua0512.ncm.utils.generateRandomHex
+import github.hua0512.ncm.utils.neteaseResponse
+import github.hua0512.ncm.utils.weapiEncrypt
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.util.*
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 
@@ -180,6 +184,17 @@ abstract class BaseNeteaseNetworkImpl(open val client: HttpClient) {
             }
         }
         header(HttpHeaders.Cookie, CookiesProvider.cookies)
+    }
+
+    suspend inline fun <reified T> NetworkResponse<JsonElement, FailedResponse>.transform(onSuccess: (JsonElement) -> T): NetworkResponse<T, FailedResponse> {
+        return when (this) {
+            is NetworkResponse.Success -> NetworkResponse.Success(onSuccess(this.body), this.headers, this.code)
+            is NetworkResponse.ServerError -> this
+            is NetworkResponse.RemoteError -> this
+            is NetworkResponse.NetworkError -> this
+            is NetworkResponse.UnknownError -> this
+            else -> throw IllegalStateException("Unsupported response type")
+        }
     }
 
 }

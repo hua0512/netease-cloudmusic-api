@@ -1,6 +1,8 @@
 package github.hua0512.ncm.data.track
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 /**
  * @author hua0512
@@ -8,9 +10,20 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseTrackQuality(
-    val br: Int,
-    val fid: Int,
-    val size: Int,
+    @JsonNames("br", "bitrate")
+    val bitrate: Int,
+    @JsonNames("fid", "id")
+    val id: Long,
+    @SerialName("size")
+    val size: Long,
+    @SerialName("sr")
     val sr: Int? = null,
-    val vd: Double
+    @JsonNames("vd", "volumeDelta")
+    val volumeDelta: Double,
+    @SerialName("extension")
+    val extension: String? = null,
+    @SerialName("dfsId")
+    val dfsId: Long? = null,
+    @SerialName("playTime")
+    val playTime: Int? = null,
 )
