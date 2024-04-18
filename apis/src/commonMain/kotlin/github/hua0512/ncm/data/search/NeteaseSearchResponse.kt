@@ -4,6 +4,7 @@ import github.hua0512.ncm.data.NeteaseResponse
 import github.hua0512.ncm.data.account.NeteaseProfile
 import github.hua0512.ncm.data.album.NeteaseAlbumDetailed
 import github.hua0512.ncm.data.artist.NeteaseArtistDetailed
+import github.hua0512.ncm.data.dj.NeteaseDj
 import github.hua0512.ncm.data.mv.NeteaseBaseVideo
 import github.hua0512.ncm.data.playlist.NeteaseBasePlaylist
 import github.hua0512.ncm.data.playlist.NeteasePlaylist
@@ -74,6 +75,16 @@ sealed class NeteaseSearchResponse : NeteaseResponse() {
         val tracks: List<NeteaseSearchTrack>,
         @SerialName("songCount")
         val tracksCount: Int,
+        @SerialName("hasMore")
+        val hasMore: Boolean? = false
+    ) : NeteaseSearchResponse()
+
+    @Serializable
+    data class Radios(
+        @SerialName("djRadios")
+        val radios: List<NeteaseDj>,
+        @SerialName("djRadiosCount")
+        val radioCount: Int,
         @SerialName("hasMore")
         val hasMore: Boolean? = false
     ) : NeteaseSearchResponse()

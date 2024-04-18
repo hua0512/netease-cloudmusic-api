@@ -43,7 +43,7 @@ enum class NeteaseSearchType(val id: Int) {
     LYRIC(1006),
 
     /**
-     * 电台
+     * 电台/播客
      */
     RADIO(1009),
 
