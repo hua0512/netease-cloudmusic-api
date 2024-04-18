@@ -7,7 +7,6 @@ import github.hua0512.ncm.data.artist.NeteaseArtistDetailed
 import github.hua0512.ncm.data.dj.NeteaseDj
 import github.hua0512.ncm.data.mv.NeteaseBaseVideo
 import github.hua0512.ncm.data.playlist.NeteaseBasePlaylist
-import github.hua0512.ncm.data.playlist.NeteasePlaylist
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -85,6 +84,16 @@ sealed class NeteaseSearchResponse : NeteaseResponse() {
         val radios: List<NeteaseDj>,
         @SerialName("djRadiosCount")
         val radioCount: Int,
+        @SerialName("hasMore")
+        val hasMore: Boolean? = false
+    ) : NeteaseSearchResponse()
+
+    @Serializable
+    data class Videos(
+        @SerialName("videos")
+        val videos: List<NeteaseBaseVideo>? = emptyList(),
+        @SerialName("videoCount")
+        val videoCount: Int? = 0,
         @SerialName("hasMore")
         val hasMore: Boolean? = false
     ) : NeteaseSearchResponse()

@@ -3,16 +3,17 @@ package github.hua0512.ncm.data.artist
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 @Serializable
 open class NeteaseBaseArtist {
     @SerialName("alias")
     open var alias: List<String>? = emptyList()
 
-    @SerialName("id")
+    @JsonNames("id", "userId")
     open var id: Int = 0
 
-    @SerialName("name")
+    @JsonNames("name", "userName")
     open var name: String = ""
 
     @SerialName("tns")

@@ -3,6 +3,7 @@ package github.hua0512.ncm.data.mv
 import github.hua0512.ncm.data.artist.NeteaseBaseArtist
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 /**
  * @author hua0512
@@ -10,30 +11,30 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseBaseVideo(
-    @SerialName("id")
+    @JsonNames("id", "vid")
     val id: Long,
-    @SerialName("name")
+    @JsonNames("name", "title")
     val name: String,
-    @SerialName("cover")
+    @JsonNames("cover", "coverUrl")
     val cover: String,
-    @SerialName("playCount")
+    @JsonNames("playCount", "playTime")
     val playCount: Int,
-    @SerialName("duration")
+    @JsonNames("duration", "durationms")
     val duration: Int,
-    @SerialName("artists")
-    val artists: List<NeteaseBaseArtist>,
+    @JsonNames("artists", "creator")
+    val artists: List<NeteaseBaseArtist>? = null,
     @SerialName("briefDesc")
     val briefDesc: String? = null,
     @SerialName("desc")
     val description: String? = null,
     @SerialName("artistName")
-    val artistName: String,
+    val artistName: String? = null,
     @SerialName("artistId")
-    val artistId: Long,
+    val artistId: Long? = null,
     @SerialName("mark")
-    val mark: Int,
+    val mark: Int? = null,
     @SerialName("arTransName")
-    val arTransName: String,
+    val arTransName: String? = null,
     @SerialName("transName")
     val transName: String? = null,
     @SerialName("alias")
