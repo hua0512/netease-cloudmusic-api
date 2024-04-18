@@ -76,4 +76,11 @@ class SearchTest : BaseNetworkTest() {
         assertTrue(response is NetworkResponse.Success)
         println(pprint(response.body))
     }
+
+    @Test
+    fun testSearchGeneral() = runTest {
+        val response = impl.search("林俊杰", limit = 10, type = NeteaseSearchType.GENERAL)
+        assertTrue(response is NetworkResponse.Success)
+        println(pprint(response.body))
+    }
 }

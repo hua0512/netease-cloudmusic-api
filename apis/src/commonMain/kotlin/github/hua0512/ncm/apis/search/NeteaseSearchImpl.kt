@@ -47,6 +47,7 @@ class NeteaseSearchImpl(client: HttpClient) : BaseNeteaseNetworkImpl(client), IS
                 NeteaseSearchType.LYRIC -> element.decodeToSearchType<NeteaseSearchResponse.Lyrics>()
                 NeteaseSearchType.RADIO -> element.decodeToSearchType<NeteaseSearchResponse.Radios>()
                 NeteaseSearchType.VIDEO -> element.decodeToSearchType<NeteaseSearchResponse.Videos>()
+                NeteaseSearchType.GENERAL -> element.decodeToSearchType<NeteaseSearchResponse.General>()
                 else -> throw UnsupportedOperationException("Unsupported search type: $type")
             }
         }
