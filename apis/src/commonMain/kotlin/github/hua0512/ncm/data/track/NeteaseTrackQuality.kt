@@ -10,20 +10,20 @@ import kotlinx.serialization.json.JsonNames
  */
 @Serializable
 data class NeteaseTrackQuality(
-    @JsonNames("br", "bitrate")
-    val bitrate: Int,
-    @JsonNames("fid", "id")
-    val id: Long,
-    @SerialName("size")
-    val size: Long,
-    @SerialName("sr")
-    val sr: Int? = null,
-    @JsonNames("vd", "volumeDelta")
-    val volumeDelta: Double,
-    @SerialName("extension")
-    val extension: String? = null,
-    @SerialName("dfsId")
-    val dfsId: Long? = null,
-    @SerialName("playTime")
-    val playTime: Int? = null,
+  @JsonNames("br", "bitrate")
+  val bitrate: Int,
+  @JsonNames("fid", "id")
+  val id: Long,
+  @SerialName("size")
+  val size: Long,
+  @SerialName("sr")
+  val sr: Int? = null,
+  @JsonNames("vd", "volumeDelta")
+  val volumeDelta: Double,
+  @SerialName("extension")
+  val extension: String? = null,
+  @SerialName("dfsId")
+  val dfsId: Long? = null,
+  @SerialName("playTime")
+  val playTime: Int? = null,
 )

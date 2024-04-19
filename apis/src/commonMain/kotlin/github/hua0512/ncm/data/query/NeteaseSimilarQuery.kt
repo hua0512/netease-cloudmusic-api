@@ -9,8 +9,8 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseSimilarQuery(
-    @SerialName("keyword")
-    val keyword: String,
-    @SerialName("alg")
-    val alg: String
+  @SerialName("keyword")
+  val keyword: String,
+  @SerialName("alg")
+  val alg: String,
 )

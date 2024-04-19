@@ -10,5 +10,5 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseHotPlaylistTagsResponse(
-    val tags: List<NeteasePlaylistTag> = emptyList()
+  val tags: List<NeteasePlaylistTag> = emptyList(),
 ) : NeteaseResponse()

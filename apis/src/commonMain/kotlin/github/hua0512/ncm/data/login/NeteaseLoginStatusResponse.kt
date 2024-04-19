@@ -7,6 +7,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class NeteaseLoginStatusResponse(
-    val account: NeteaseAccount,
-    val profile: NeteaseProfile,
+  val account: NeteaseAccount,
+  val profile: NeteaseProfile,
 ) : NeteaseResponse()

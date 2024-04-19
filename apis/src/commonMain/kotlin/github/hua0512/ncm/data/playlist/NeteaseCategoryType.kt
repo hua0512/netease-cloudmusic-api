@@ -11,19 +11,19 @@ import kotlinx.serialization.json.jsonPrimitive
 
 @Serializable
 data class NeteaseCategoryType(
-    val name: String,
+  val name: String,
 )
 
 internal object CategoriesSerializer : KSerializer<List<NeteaseCategoryType>> {
 
-    override val descriptor = ListSerializer(NeteaseCategoryType.serializer()).descriptor
+  override val descriptor = ListSerializer(NeteaseCategoryType.serializer()).descriptor
 
-    override fun serialize(encoder: Encoder, value: List<NeteaseCategoryType>) {
-        throw NotImplementedError("Serialization is not supported")
-    }
+  override fun serialize(encoder: Encoder, value: List<NeteaseCategoryType>) {
+    throw NotImplementedError("Serialization is not supported")
+  }
 
-    override fun deserialize(decoder: Decoder): List<NeteaseCategoryType> {
-        val jsonObject = decoder.decodeSerializableValue(JsonObject.serializer())
-        return jsonObject.entries.map { NeteaseCategoryType(it.value.jsonPrimitive.content) }
-    }
+  override fun deserialize(decoder: Decoder): List<NeteaseCategoryType> {
+    val jsonObject = decoder.decodeSerializableValue(JsonObject.serializer())
+    return jsonObject.entries.map { NeteaseCategoryType(it.value.jsonPrimitive.content) }
+  }
 }

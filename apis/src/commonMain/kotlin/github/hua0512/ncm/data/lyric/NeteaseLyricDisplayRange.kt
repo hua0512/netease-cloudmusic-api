@@ -8,6 +8,6 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseLyricDisplayRange(
-    val first: Int,
-    val second: Int
+  val first: Int,
+  val second: Int,
 )

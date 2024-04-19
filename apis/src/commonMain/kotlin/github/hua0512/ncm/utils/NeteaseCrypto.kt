@@ -26,39 +26,39 @@ private const val eapiKey = "e82ckenh8dichen8"
 
 
 suspend fun weapiEncrypt(data: JsonObject): Map<String, String> {
-    val json = json.encodeToString(data)
-    val secretKey = buildString {
-        for (i in 0 until 16) {
-            append(base62[Random.nextInt(62)])
-        }
+  val json = json.encodeToString(data)
+  val secretKey = buildString {
+    for (i in 0 until 16) {
+      append(base62[Random.nextInt(62)])
     }
-    return mapOf(
-        "params" to base64Encode(
-            aesEncrypt(
-                base64Encode(aesEncrypt(json, AESMode.CBC, AESPadding.PKCS5Padding, presetKey, iv)),
-                AESMode.CBC,
-                AESPadding.PKCS5Padding,
-                secretKey,
-                iv
-            )
-        ),
-        "encSecKey" to rsaEncrypt(
-            secretKey.reversed(),
-            base64Decode(publicKey.replace("-----BEGIN PUBLIC KEY-----\n", "").replace("\n-----END PUBLIC KEY-----", ""))
-        ).toHexString()
-    )
+  }
+  return mapOf(
+    "params" to base64Encode(
+      aesEncrypt(
+        base64Encode(aesEncrypt(json, AESMode.CBC, AESPadding.PKCS5Padding, presetKey, iv)),
+        AESMode.CBC,
+        AESPadding.PKCS5Padding,
+        secretKey,
+        iv
+      )
+    ),
+    "encSecKey" to rsaEncrypt(
+      secretKey.reversed(),
+      base64Decode(publicKey.replace("-----BEGIN PUBLIC KEY-----\n", "").replace("\n-----END PUBLIC KEY-----", ""))
+    ).toHexString()
+  )
 }
 
 suspend fun eapiEncrypt(url: String, data: JsonObject): String {
-    val text = json.encodeToString(data)
-    val message = "nobody${url}use${text}md5forencrypt"
-    val digest = message.toMd5()
-    val final = "$url-36cd479b6b5-$text-36cd479b6b5-$digest"
-    return aesECBEncrypt(final, eapiKey, paddingMode = AESPadding.PKCS5Padding).toHexString(HexFormat.UpperCase)
+  val text = json.encodeToString(data)
+  val message = "nobody${url}use${text}md5forencrypt"
+  val digest = message.toMd5()
+  val final = "$url-36cd479b6b5-$text-36cd479b6b5-$digest"
+  return aesECBEncrypt(final, eapiKey, paddingMode = AESPadding.PKCS5Padding).toHexString(HexFormat.UpperCase)
 }
 
 
 fun eapiDecrypt(cipher: String): String {
-    val decodedCipher = base64Decode(cipher)
-    return aesECBDencrypt(decodedCipher.decodeToString(), eapiKey, AESPadding.PKCS5Padding).decodeToString()
+  val decodedCipher = base64Decode(cipher)
+  return aesECBDencrypt(decodedCipher.decodeToString(), eapiKey, AESPadding.PKCS5Padding).decodeToString()
 }

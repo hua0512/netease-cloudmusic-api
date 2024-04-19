@@ -12,10 +12,10 @@ import github.hua0512.ncm.data.search.NeteaseSearchType
  */
 interface ISearch : INeteaseApi {
 
-    suspend fun search(
-        keywords: String,
-        limit: Int? = 30,
-        offset: Int? = 0,
-        type: NeteaseSearchType? = NeteaseSearchType.TRACK
-    ): NetworkResponse<NeteaseSearchResponse, FailedResponse>
+  suspend fun search(
+    keywords: String,
+    limit: Int? = 30,
+    offset: Int? = 0,
+    type: NeteaseSearchType? = NeteaseSearchType.TRACK,
+  ): NetworkResponse<NeteaseSearchResponse, FailedResponse>
 }

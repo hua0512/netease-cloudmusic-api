@@ -8,13 +8,13 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseTrialInfo(
-    val fragmentType: Int,
-    val start: Long,
-    val end: Long,
-    val algData: NeteaseTrialInfoAlgData? = null
+  val fragmentType: Int,
+  val start: Long,
+  val end: Long,
+  val algData: NeteaseTrialInfoAlgData? = null,
 )
 
 @Serializable
 data class NeteaseTrialInfoAlgData(
-    val audioEffect: Int,
+  val audioEffect: Int,
 )

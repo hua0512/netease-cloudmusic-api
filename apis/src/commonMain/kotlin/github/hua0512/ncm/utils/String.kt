@@ -9,11 +9,11 @@ import io.ktor.utils.io.core.*
 import kotlin.random.Random
 
 fun generateRandomHex(size: Int = 16): String {
-    val bytes = ByteArray(size) { Random.nextInt(0, 256).toByte() }
-    return bytes.toHexString()
+  val bytes = ByteArray(size) { Random.nextInt(0, 256).toByte() }
+  return bytes.toHexString()
 }
 
 suspend fun String.toMd5(format: HexFormat = HexFormat.Default): String {
-    val bytes = this.toByteArray()
-    return CryptographyProvider.Default.get(MD5).hasher().hash(bytes).toHexString(format)
+  val bytes = this.toByteArray()
+  return CryptographyProvider.Default.get(MD5).hasher().hash(bytes).toHexString(format)
 }

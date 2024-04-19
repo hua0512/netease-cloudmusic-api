@@ -7,9 +7,9 @@ import kotlinx.serialization.json.Json
  * @date : 2024/4/15 22:29
  */
 val json by lazy {
-    Json {
-        ignoreUnknownKeys = true
-        prettyPrint = false
-        isLenient = true
-    }
+  Json {
+    ignoreUnknownKeys = true
+    prettyPrint = false
+    isLenient = true
+  }
 }

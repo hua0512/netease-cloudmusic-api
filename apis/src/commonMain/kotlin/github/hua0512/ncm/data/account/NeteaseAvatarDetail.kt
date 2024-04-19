@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseAvatarDetail(
-    val userType: Int,
-    val identityLevel: Int,
-    val identityIconUrl: String,
+  val userType: Int,
+  val identityLevel: Int,
+  val identityIconUrl: String,
 )

@@ -6,14 +6,14 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed class NeteaseBatchResponse : NeteaseResponse() {
 
-    @Serializable
-    data class Single(
-        val apiUrl: String? = "",
-    ) : NeteaseBatchResponse()
+  @Serializable
+  data class Single(
+    val apiUrl: String? = "",
+  ) : NeteaseBatchResponse()
 
-    @Serializable
-    data class Multiple(
-        val responses: List<Single> = emptyList()
-    ) : NeteaseBatchResponse()
+  @Serializable
+  data class Multiple(
+    val responses: List<Single> = emptyList(),
+  ) : NeteaseBatchResponse()
 
 }

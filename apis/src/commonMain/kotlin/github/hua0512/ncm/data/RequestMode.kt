@@ -2,9 +2,9 @@ package github.hua0512.ncm.data
 
 enum class RequestMode {
 
-    WEAPI,
-    EAPI,
+  WEAPI,
+  EAPI,
 
-    // NOT ENCRIPTED
-    API,
+  // NOT ENCRIPTED
+  API,
 }

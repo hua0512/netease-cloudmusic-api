@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class NeteaseCountryGroup(
-    val label: String = "",
-    val countryList: List<NeteaseCountry> = listOf()
+  val label: String = "",
+  val countryList: List<NeteaseCountry> = listOf(),
 )

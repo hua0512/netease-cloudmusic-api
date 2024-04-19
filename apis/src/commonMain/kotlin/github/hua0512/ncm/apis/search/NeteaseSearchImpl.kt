@@ -20,42 +20,55 @@ import kotlinx.serialization.json.jsonObject
  */
 class NeteaseSearchImpl(client: HttpClient) : BaseNeteaseNetworkImpl(client), ISearch {
 
-    private fun getBody(json: JsonElement): JsonObject? {
-        return json.jsonObject["result"]?.jsonObject
-    }
+  private fun getBody(json: JsonElement, result: String? = "result"): JsonObject? {
+    return json.jsonObject[result]?.jsonObject
+  }
 
 
-    override suspend fun search(
-        keywords: String,
-        limit: Int?,
-        offset: Int?,
-        type: NeteaseSearchType?
-    ): NetworkResponse<NeteaseSearchResponse, FailedResponse> = postApi<JsonElement, FailedResponse>(pathName = "/weapi/search/get") {
-        parameter("s", keywords)
-        parameter("type", type?.id ?: NeteaseSearchType.TRACK.id)
-        parameter("limit", limit ?: 30)
-        parameter("offset", offset ?: 0)
+  override suspend fun search(
+    keywords: String,
+    limit: Int?,
+    offset: Int?,
+    type: NeteaseSearchType?,
+  ): NetworkResponse<NeteaseSearchResponse, FailedResponse> = when (type) {
+    // voice search uses a different api
+    NeteaseSearchType.VOICE -> postApi<JsonElement, FailedResponse>(pathName = "/api/search/voice/get") {
+      parameter("keyword", keywords)
+      parameter("limit", limit ?: 30)
+      parameter("offset", offset ?: 0)
+      parameter("scene", "normal")
     }.run {
-        transform { element ->
-            when (type) {
-                NeteaseSearchType.TRACK -> element.decodeToSearchType<NeteaseSearchResponse.Tracks>()
-                NeteaseSearchType.ALBUM -> element.decodeToSearchType<NeteaseSearchResponse.Albums>()
-                NeteaseSearchType.ARTIST -> element.decodeToSearchType<NeteaseSearchResponse.Artists>()
-                NeteaseSearchType.PLAYLIST -> element.decodeToSearchType<NeteaseSearchResponse.Playlists>()
-                NeteaseSearchType.USER -> element.decodeToSearchType<NeteaseSearchResponse.Users>()
-                NeteaseSearchType.MV -> element.decodeToSearchType<NeteaseSearchResponse.Mvs>()
-                NeteaseSearchType.LYRIC -> element.decodeToSearchType<NeteaseSearchResponse.Lyrics>()
-                NeteaseSearchType.RADIO -> element.decodeToSearchType<NeteaseSearchResponse.Radios>()
-                NeteaseSearchType.VIDEO -> element.decodeToSearchType<NeteaseSearchResponse.Videos>()
-                NeteaseSearchType.GENERAL -> element.decodeToSearchType<NeteaseSearchResponse.General>()
-                else -> throw UnsupportedOperationException("Unsupported search type: $type")
-            }
+      transform { element ->
+        element.decodeToSearchType<NeteaseSearchResponse.Voices>("data")
+      }
+    }
+
+    else -> postApi<JsonElement, FailedResponse>(pathName = "/weapi/search/get") {
+      parameter("s", keywords)
+      parameter("type", type?.id ?: NeteaseSearchType.TRACK.id)
+      parameter("limit", limit ?: 30)
+      parameter("offset", offset ?: 0)
+    }.run {
+      transform { element ->
+        when (type) {
+          NeteaseSearchType.TRACK -> element.decodeToSearchType<NeteaseSearchResponse.Tracks>()
+          NeteaseSearchType.ALBUM -> element.decodeToSearchType<NeteaseSearchResponse.Albums>()
+          NeteaseSearchType.ARTIST -> element.decodeToSearchType<NeteaseSearchResponse.Artists>()
+          NeteaseSearchType.PLAYLIST -> element.decodeToSearchType<NeteaseSearchResponse.Playlists>()
+          NeteaseSearchType.USER -> element.decodeToSearchType<NeteaseSearchResponse.Users>()
+          NeteaseSearchType.MV -> element.decodeToSearchType<NeteaseSearchResponse.Mvs>()
+          NeteaseSearchType.LYRIC -> element.decodeToSearchType<NeteaseSearchResponse.Lyrics>()
+          NeteaseSearchType.RADIO -> element.decodeToSearchType<NeteaseSearchResponse.Radios>()
+          NeteaseSearchType.VIDEO -> element.decodeToSearchType<NeteaseSearchResponse.Videos>()
+          NeteaseSearchType.GENERAL -> element.decodeToSearchType<NeteaseSearchResponse.General>()
+          else -> throw UnsupportedOperationException("Unsupported search type: $type")
         }
+      }
     }
+  }
 
-
-    private inline fun <reified T : NeteaseSearchResponse> JsonElement.decodeToSearchType(): T {
-        val result = getBody(this) ?: throw IllegalStateException("No result found in response")
-        return json.decodeFromJsonElement(result)
-    }
+  private inline fun <reified T : NeteaseSearchResponse> JsonElement.decodeToSearchType(body: String? = "result"): T {
+    val result = getBody(this, result = body) ?: throw IllegalStateException("No result found in response")
+    return json.decodeFromJsonElement(result)
+  }
 }

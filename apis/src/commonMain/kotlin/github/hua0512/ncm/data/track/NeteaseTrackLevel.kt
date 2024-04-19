@@ -5,44 +5,44 @@ package github.hua0512.ncm.data.track
  * @date : 2024/4/9 14:44
  */
 enum class NeteaseTrackLevel(val level: String) {
-    /**
-     * 标准
-     */
-    STANDARD("standard"),
+  /**
+   * 标准
+   */
+  STANDARD("standard"),
 
-    /**
-     * 较高品质
-     */
-    HIGHER("higher"),
+  /**
+   * 较高品质
+   */
+  HIGHER("higher"),
 
-    /**
-     * 极高品质
-     */
-    EXHIGH("exhigh"),
+  /**
+   * 极高品质
+   */
+  EXHIGH("exhigh"),
 
-    /**
-     * 无损品质
-     */
-    LOSSLESS("lossless"),
+  /**
+   * 无损品质
+   */
+  LOSSLESS("lossless"),
 
-    /**
-     * Hi-Res品质
-     */
-    HIRES("hires"),
+  /**
+   * Hi-Res品质
+   */
+  HIRES("hires"),
 
-    /**
-     * 高清环绕音效
-     */
-    JYEFFECT("jyeffect"),
+  /**
+   * 高清环绕音效
+   */
+  JYEFFECT("jyeffect"),
 
-    /**
-     * 沉浸环绕声
-     */
-    SKY("sky"),
+  /**
+   * 沉浸环绕声
+   */
+  SKY("sky"),
 
-    /**
-     * 超清母带
-     */
-    JYMASTER("jymaster"),
+  /**
+   * 超清母带
+   */
+  JYMASTER("jymaster"),
 
 }

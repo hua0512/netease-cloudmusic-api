@@ -11,13 +11,13 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseOriginTrackData(
-    @SerialName("songId")
-    val songId: Long,
-    @SerialName("name")
-    val name: String,
-    @SerialName("artists")
-    val artists: List<NeteaseBaseArtist>,
-    @SerialName("albumMeta")
-    val albumMeta: NeteaseBaseAlbum,
+  @SerialName("songId")
+  val songId: Long,
+  @SerialName("name")
+  val name: String,
+  @SerialName("artists")
+  val artists: List<NeteaseBaseArtist>,
+  @SerialName("albumMeta")
+  val albumMeta: NeteaseBaseAlbum,
 )
 

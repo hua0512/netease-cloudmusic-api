@@ -8,14 +8,14 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseTrackIdInfo(
-    val id: Long,
-    val v: Int,
-    val t: Int,
-    val at: Long,
-    val alg: String? = null,
-    val uid: Long,
-    val rcmdReason: String? = null,
-    val sc: String? = null,
-    val f: String? = null,
-    val sr: String? = null,
+  val id: Long,
+  val v: Int,
+  val t: Int,
+  val at: Long,
+  val alg: String? = null,
+  val uid: Long,
+  val rcmdReason: String? = null,
+  val sc: String? = null,
+  val f: String? = null,
+  val sr: String? = null,
 )

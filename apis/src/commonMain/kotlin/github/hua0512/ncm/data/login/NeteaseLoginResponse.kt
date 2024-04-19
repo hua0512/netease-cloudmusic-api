@@ -8,9 +8,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class NeteaseLoginResponse(
-    val loginType: Int = 0,
-    val account: NeteaseAccount,
-    val token: String,
-    val profile: NeteaseProfile,
-    val bindings: List<NeteaseUserBinding> = emptyList(),
+  val loginType: Int = 0,
+  val account: NeteaseAccount,
+  val token: String,
+  val profile: NeteaseProfile,
+  val bindings: List<NeteaseUserBinding> = emptyList(),
 ) : NeteaseResponse()

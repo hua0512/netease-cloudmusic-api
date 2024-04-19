@@ -7,6 +7,6 @@ import github.hua0512.ncm.data.nickname.NeteaseNicknameResponse
 
 interface INickname : INeteaseApi {
 
-    suspend fun checkNick(nickname: String): NetworkResponse<NeteaseNicknameResponse, FailedResponse>
+  suspend fun checkNick(nickname: String): NetworkResponse<NeteaseNicknameResponse, FailedResponse>
 
 }

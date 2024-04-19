@@ -9,15 +9,15 @@ import github.hua0512.ncm.data.login.NeteaseLoginStatusResponse
 interface ILogin : INeteaseApi {
 
 
-    suspend fun loginByEmail(email: String, password: String, md5Password: String?): NetworkResponse<NeteaseLoginResponse, FailedResponse>
+  suspend fun loginByEmail(email: String, password: String, md5Password: String?): NetworkResponse<NeteaseLoginResponse, FailedResponse>
 
-    suspend fun loginByPhone(
-        phone: String,
-        password: String,
-        countryCode: String?,
-        md5Password: String?,
-        captcha: String?
-    ): NetworkResponse<NeteaseLoginResponse, FailedResponse>
+  suspend fun loginByPhone(
+    phone: String,
+    password: String,
+    countryCode: String?,
+    md5Password: String?,
+    captcha: String?,
+  ): NetworkResponse<NeteaseLoginResponse, FailedResponse>
 
-    suspend fun loginStatus(): NetworkResponse<NeteaseLoginStatusResponse, FailedResponse>
+  suspend fun loginStatus(): NetworkResponse<NeteaseLoginStatusResponse, FailedResponse>
 }

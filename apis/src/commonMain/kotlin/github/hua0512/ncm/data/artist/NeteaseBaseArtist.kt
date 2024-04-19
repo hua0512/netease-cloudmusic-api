@@ -7,43 +7,43 @@ import kotlinx.serialization.json.JsonNames
 
 @Serializable
 open class NeteaseBaseArtist {
-    @SerialName("alias")
-    open var alias: List<String>? = emptyList()
+  @SerialName("alias")
+  open var alias: List<String>? = emptyList()
 
-    @JsonNames("id", "userId")
-    open var id: Int = 0
+  @JsonNames("id", "userId")
+  open var id: Int = 0
 
-    @JsonNames("name", "userName")
-    open var name: String = ""
+  @JsonNames("name", "userName")
+  open var name: String = ""
 
-    @SerialName("tns")
-    var tns: List<String>? = emptyList()
+  @SerialName("tns")
+  var tns: List<String>? = emptyList()
 
-    override fun toString(): String {
-        return "NeteaseArtist(alias=$alias, id=$id, name='$name', tns=$tns)"
-    }
+  override fun toString(): String {
+    return "NeteaseArtist(alias=$alias, id=$id, name='$name', tns=$tns)"
+  }
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || this::class != other::class) return false
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (other == null || this::class != other::class) return false
 
-        other as NeteaseBaseArtist
+    other as NeteaseBaseArtist
 
-        if (alias != other.alias) return false
-        if (id != other.id) return false
-        if (name != other.name) return false
-        if (tns != other.tns) return false
+    if (alias != other.alias) return false
+    if (id != other.id) return false
+    if (name != other.name) return false
+    if (tns != other.tns) return false
 
-        return true
-    }
+    return true
+  }
 
-    override fun hashCode(): Int {
-        var result = alias?.hashCode() ?: 0
-        result = 31 * result + id
-        result = 31 * result + name.hashCode()
-        result = 31 * result + (tns?.hashCode() ?: 0)
-        return result
-    }
+  override fun hashCode(): Int {
+    var result = alias?.hashCode() ?: 0
+    result = 31 * result + id
+    result = 31 * result + name.hashCode()
+    result = 31 * result + (tns?.hashCode() ?: 0)
+    return result
+  }
 
 
 }

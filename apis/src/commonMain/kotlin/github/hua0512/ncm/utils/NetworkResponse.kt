@@ -12,34 +12,34 @@ import kotlinx.serialization.SerializationException
  */
 @Suppress("FunctionNaming")
 suspend inline fun <reified T, reified U> networkResponse(
-    request: () -> HttpResponse,
+  request: () -> HttpResponse,
 ): NetworkResponse<T, U> = try {
-    request().asNetworkResponse()
+  request().asNetworkResponse()
 } catch (throwable: Throwable) {
-    throwable.asNetworkResponse()
+  throwable.asNetworkResponse()
 }
 
 suspend inline fun <reified T, reified U> HttpResponse.asNetworkResponse(): NetworkResponse<T, U> =
-    with(this) { NetworkResponse.Success(decode(), headers, status.value) }
+  with(this) { NetworkResponse.Success(decode(), headers, status.value) }
 
 suspend inline fun <reified T, reified U> ResponseException.serializeAsError(): NetworkResponse<T, U> =
-    try {
-        with(response) { NetworkResponse.ServerError(decode(), status.value, headers) }
-    } catch (throwable: Throwable) {
-        // check if is a failed decode, if so, decode as U
-        if (throwable is SerializationException || throwable is IllegalArgumentException) {
-            with(response) { NetworkResponse.ServerError(decode<U>(), status.value, headers) }
-        } else
-            NetworkResponse.UnknownError(throwable)
-    }
+  try {
+    with(response) { NetworkResponse.ServerError(decode(), status.value, headers) }
+  } catch (throwable: Throwable) {
+    // check if is a failed decode, if so, decode as U
+    if (throwable is SerializationException || throwable is IllegalArgumentException) {
+      with(response) { NetworkResponse.ServerError(decode<U>(), status.value, headers) }
+    } else
+      NetworkResponse.UnknownError(throwable)
+  }
 
 
 suspend inline fun <reified T> HttpResponse.decode(): T = json.decodeFromString<T>(bodyAsText())
 
 suspend inline fun <reified T : Any, reified U : Any> Throwable.asNetworkResponse(): NetworkResponse<T, U> =
-    when (this) {
-        is ResponseException -> serializeAsError()
-        is UnresolvedAddressException -> NetworkResponse.RemoteError(this)
-        is IOException -> NetworkResponse.NetworkError(this)
-        else -> NetworkResponse.UnknownError(this)
-    }
+  when (this) {
+    is ResponseException -> serializeAsError()
+    is UnresolvedAddressException -> NetworkResponse.RemoteError(this)
+    is IOException -> NetworkResponse.NetworkError(this)
+    else -> NetworkResponse.UnknownError(this)
+  }

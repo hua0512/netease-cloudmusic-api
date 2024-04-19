@@ -11,34 +11,34 @@ import kotlinx.serialization.json.JsonNames
  */
 @Serializable
 data class NeteaseBaseVideo(
-    @JsonNames("id", "vid")
-    val id: Long,
-    @JsonNames("name", "title")
-    val name: String,
-    @JsonNames("cover", "coverUrl")
-    val cover: String,
-    @JsonNames("playCount", "playTime")
-    val playCount: Int,
-    @JsonNames("duration", "durationms")
-    val duration: Int,
-    @JsonNames("artists", "creator")
-    val artists: List<NeteaseBaseArtist>? = null,
-    @SerialName("briefDesc")
-    val briefDesc: String? = null,
-    @SerialName("desc")
-    val description: String? = null,
-    @SerialName("artistName")
-    val artistName: String? = null,
-    @SerialName("artistId")
-    val artistId: Long? = null,
-    @SerialName("mark")
-    val mark: Int? = null,
-    @SerialName("arTransName")
-    val arTransName: String? = null,
-    @SerialName("transName")
-    val transName: String? = null,
-    @SerialName("alias")
-    val alias: List<String>? = null,
-    @SerialName("alg")
-    val arg: String? = null
+  @JsonNames("id", "vid")
+  val id: Long,
+  @JsonNames("name", "title")
+  val name: String,
+  @JsonNames("cover", "coverUrl")
+  val cover: String,
+  @JsonNames("playCount", "playTime")
+  val playCount: Int,
+  @JsonNames("duration", "durationms")
+  val duration: Int,
+  @JsonNames("artists", "creator")
+  val artists: List<NeteaseBaseArtist>? = null,
+  @SerialName("briefDesc")
+  val briefDesc: String? = null,
+  @SerialName("desc")
+  val description: String? = null,
+  @SerialName("artistName")
+  val artistName: String? = null,
+  @SerialName("artistId")
+  val artistId: Long? = null,
+  @SerialName("mark")
+  val mark: Int? = null,
+  @SerialName("arTransName")
+  val arTransName: String? = null,
+  @SerialName("transName")
+  val transName: String? = null,
+  @SerialName("alias")
+  val alias: List<String>? = null,
+  @SerialName("alg")
+  val arg: String? = null,
 )

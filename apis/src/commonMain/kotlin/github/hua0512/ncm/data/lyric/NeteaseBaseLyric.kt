@@ -9,8 +9,8 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeteaseBaseLyric(
-    @SerialName("txt")
-    val txt: String,
-    @SerialName("range")
-    val range: List<NeteaseLyricDisplayRange> = emptyList()
+  @SerialName("txt")
+  val txt: String,
+  @SerialName("range")
+  val range: List<NeteaseLyricDisplayRange> = emptyList(),
 )

@@ -7,5 +7,5 @@ import github.hua0512.ncm.data.location.NeteaseCountryResponse
 
 interface ICountry : INeteaseApi {
 
-    suspend fun getCountriesCode(): NetworkResponse<NeteaseCountryResponse, FailedResponse>
+  suspend fun getCountriesCode(): NetworkResponse<NeteaseCountryResponse, FailedResponse>
 }

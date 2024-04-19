@@ -9,12 +9,12 @@ import io.ktor.client.request.*
 
 class NicknameImpl(client: HttpClient) : BaseNeteaseNetworkImpl(client), INickname {
 
-    override suspend fun checkNick(nickname: String): NetworkResponse<NeteaseNicknameResponse, FailedResponse> {
-        // cookies are not needed
-        // can be called without login directly
-        return postApi(pathName = "/api/nickname/duplicated") {
-            parameter("nickname", nickname)
-        }
+  override suspend fun checkNick(nickname: String): NetworkResponse<NeteaseNicknameResponse, FailedResponse> {
+    // cookies are not needed
+    // can be called without login directly
+    return postApi(pathName = "/api/nickname/duplicated") {
+      parameter("nickname", nickname)
     }
+  }
 
 }

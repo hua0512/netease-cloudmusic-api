@@ -12,75 +12,82 @@ import kotlin.test.assertTrue
  */
 class SearchTest : BaseNetworkTest() {
 
-    private val impl = NeteaseSearchImpl(client)
+  private val impl = NeteaseSearchImpl(client)
 
-    @Test
-    fun testSearchTrack() = runTest {
-        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.TRACK)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchTrack() = runTest {
+    val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.TRACK)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchAlbum() = runTest {
-        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.ALBUM)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchAlbum() = runTest {
+    val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.ALBUM)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchArtist() = runTest {
-        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.ARTIST)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchArtist() = runTest {
+    val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.ARTIST)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchPlaylist() = runTest {
-        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.PLAYLIST)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchPlaylist() = runTest {
+    val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.PLAYLIST)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchUser() = runTest {
-        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.USER)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchUser() = runTest {
+    val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.USER)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchMv() = runTest {
-        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.MV)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchMv() = runTest {
+    val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.MV)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchLyric() = runTest {
-        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.LYRIC)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchLyric() = runTest {
+    val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.LYRIC)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchRadio() = runTest {
-        val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.RADIO)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchRadio() = runTest {
+    val response = impl.search("周杰伦", limit = 10, type = NeteaseSearchType.RADIO)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchVideo() = runTest {
-        val response = impl.search("林俊杰", limit = 10, type = NeteaseSearchType.VIDEO)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchVideo() = runTest {
+    val response = impl.search("林俊杰", limit = 10, type = NeteaseSearchType.VIDEO)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 
-    @Test
-    fun testSearchGeneral() = runTest {
-        val response = impl.search("林俊杰", limit = 10, type = NeteaseSearchType.GENERAL)
-        assertTrue(response is NetworkResponse.Success)
-        println(pprint(response.body))
-    }
+  @Test
+  fun testSearchGeneral() = runTest {
+    val response = impl.search("林俊杰", limit = 10, type = NeteaseSearchType.GENERAL)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
+
+  @Test
+  fun testSearchVoice() = runTest {
+    val response = impl.search("林俊杰", limit = 10, type = NeteaseSearchType.VOICE)
+    assertTrue(response is NetworkResponse.Success)
+    println(pprint(response.body))
+  }
 }

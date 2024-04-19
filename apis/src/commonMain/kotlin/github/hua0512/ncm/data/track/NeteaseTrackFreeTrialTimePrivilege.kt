@@ -6,10 +6,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class NeteaseTrackFreeTrialTimePrivilege(
-    @SerialName("resConsumable")
-    val resConsumable: Boolean,
-    @SerialName("userConsumable")
-    val userConsumable: Boolean,
-    val type: Int,
-    val remainTime: Int
+  @SerialName("resConsumable")
+  val resConsumable: Boolean,
+  @SerialName("userConsumable")
+  val userConsumable: Boolean,
+  val type: Int,
+  val remainTime: Int,
 )

@@ -9,21 +9,21 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 open class NeteaseBaseAlbum {
-    @SerialName("id")
-    var id: Int = 0
+  @SerialName("id")
+  var id: Int = 0
 
-    @SerialName("name")
-    var name: String = ""
+  @SerialName("name")
+  var name: String = ""
 
-    @SerialName("pic")
-    var pic: Long? = null
+  @SerialName("pic")
+  var pic: Long? = null
 
-    @SerialName("pic_str")
-    var picStr: String? = null
+  @SerialName("pic_str")
+  var picStr: String? = null
 
-    @SerialName("picUrl")
-    var picUrl: String? = null
+  @SerialName("picUrl")
+  var picUrl: String? = null
 
-    @SerialName("tns")
-    var tns: List<String>? = emptyList()
+  @SerialName("tns")
+  var tns: List<String>? = emptyList()
 }

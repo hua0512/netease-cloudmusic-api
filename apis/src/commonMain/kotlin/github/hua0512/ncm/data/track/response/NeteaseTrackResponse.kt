@@ -11,8 +11,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed class NeteaseTrackResponse : NeteaseResponse() {
 
-    @Serializable
-    data class TracksInfo(
-        val data: List<NeteaseTrackDownloadInfo>
-    ) : NeteaseTrackResponse()
+  @Serializable
+  data class TracksInfo(
+    val data: List<NeteaseTrackDownloadInfo>,
+  ) : NeteaseTrackResponse()
 }

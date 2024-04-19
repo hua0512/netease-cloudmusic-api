@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class NeteaseNicknameResponse(
-    val nickname: String = "",
-    val candidateNicknames: List<String> = emptyList(),
-    val duplicated: Boolean = false,
+  val nickname: String = "",
+  val candidateNicknames: List<String> = emptyList(),
+  val duplicated: Boolean = false,
 ) : NeteaseResponse()
