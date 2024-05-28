@@ -1,9 +1,12 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package github.hua0512.ncm.data.track
 
 
 import github.hua0512.ncm.data.album.NeteaseAlbumDetailed
 import github.hua0512.ncm.data.artist.NeteaseBaseArtist
 import github.hua0512.ncm.data.lyric.NeteaseBaseLyric
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonNames

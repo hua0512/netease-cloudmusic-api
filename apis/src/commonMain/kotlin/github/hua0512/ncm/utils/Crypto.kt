@@ -6,7 +6,7 @@ internal expect object Crypto {
 
   fun aesECBEncrypt(text: String, key: String, paddingMode: AESPadding): ByteArray
 
-  fun aesECBDencrypt(text: String, key: String, paddingMode: AESPadding): ByteArray
+  fun aesECBDecrypt(text: String, key: String, paddingMode: AESPadding): ByteArray
 
   fun rsaEncrypt(str: String, key: ByteArray): ByteArray
 

@@ -2,7 +2,7 @@
 
 package github.hua0512.ncm.utils
 
-import github.hua0512.ncm.utils.Crypto.aesECBDencrypt
+import github.hua0512.ncm.utils.Crypto.aesECBDecrypt
 import github.hua0512.ncm.utils.Crypto.aesECBEncrypt
 import github.hua0512.ncm.utils.Crypto.rsaEncrypt
 import github.hua0512.ncm.utils.encryption.*
@@ -60,5 +60,5 @@ suspend fun eapiEncrypt(url: String, data: JsonObject): String {
 
 fun eapiDecrypt(cipher: String): String {
   val decodedCipher = base64Decode(cipher)
-  return aesECBDencrypt(decodedCipher.decodeToString(), eapiKey, AESPadding.PKCS5Padding).decodeToString()
+  return aesECBDecrypt(decodedCipher.decodeToString(), eapiKey, AESPadding.PKCS5Padding).decodeToString()
 }

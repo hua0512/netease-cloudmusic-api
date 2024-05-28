@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalStdlibApi::class)
+
 import github.hua0512.ncm.apis.login.LoginImpl
 import github.hua0512.ncm.utils.toMd5
 import kotlinx.coroutines.test.runTest

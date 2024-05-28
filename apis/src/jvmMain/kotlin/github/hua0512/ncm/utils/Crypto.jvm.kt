@@ -27,7 +27,7 @@ internal actual object Crypto {
     return cipher.doFinal(text.toByteArray(StandardCharsets.UTF_8))
   }
 
-  actual fun aesECBDencrypt(text: String, key: String, paddingMode: AESPadding): ByteArray {
+  actual fun aesECBDecrypt(text: String, key: String, paddingMode: AESPadding): ByteArray {
     val secretKey = SecretKeySpec(key.toByteArray(StandardCharsets.UTF_8), "AES")
     val cipher = Cipher.getInstance("AES/ECB/${paddingMode.mode}").apply {
       init(Cipher.DECRYPT_MODE, secretKey)
