@@ -1,6 +1,6 @@
 package github.hua0512.ncm.apis.track
 
-import github.hua0512.ncm.apis.CookiesProvider
+import github.hua0512.ncm.utils.CookiesProvider
 import github.hua0512.ncm.apis.base.BaseNeteaseNetworkImpl
 import github.hua0512.ncm.apis.base.NetworkResponse
 import github.hua0512.ncm.data.FailedResponse

@@ -25,7 +25,7 @@ MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgtQn2JZ34ZC28NWYpAUd98iZ37BUrX/aKzmFbt7cl
 private const val eapiKey = "e82ckenh8dichen8"
 
 
-suspend fun weapiEncrypt(data: JsonObject): Map<String, String> {
+internal suspend fun weapiEncrypt(data: JsonObject): Map<String, String> {
   val json = json.encodeToString(data)
   val secretKey = buildString {
     for (i in 0 until 16) {
@@ -49,7 +49,7 @@ suspend fun weapiEncrypt(data: JsonObject): Map<String, String> {
   )
 }
 
-suspend fun eapiEncrypt(url: String, data: JsonObject): String {
+internal suspend fun eapiEncrypt(url: String, data: JsonObject): String {
   val text = json.encodeToString(data)
   val message = "nobody${url}use${text}md5forencrypt"
   val digest = message.toMd5()
@@ -58,7 +58,7 @@ suspend fun eapiEncrypt(url: String, data: JsonObject): String {
 }
 
 
-fun eapiDecrypt(cipher: String): String {
+internal fun eapiDecrypt(cipher: String): String {
   val decodedCipher = base64Decode(cipher)
   return aesECBDecrypt(decodedCipher.decodeToString(), eapiKey, AESPadding.PKCS5Padding).decodeToString()
 }

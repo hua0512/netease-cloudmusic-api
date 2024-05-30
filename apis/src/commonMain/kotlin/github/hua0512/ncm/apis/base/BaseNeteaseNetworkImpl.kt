@@ -1,6 +1,6 @@
 package github.hua0512.ncm.apis.base
 
-import github.hua0512.ncm.apis.CookiesProvider
+import github.hua0512.ncm.utils.CookiesProvider
 import github.hua0512.ncm.apis.base.NeteaseHeaders.MUSIC_A
 import github.hua0512.ncm.apis.base.NeteaseHeaders.MUSIC_U
 import github.hua0512.ncm.apis.base.NeteaseHeaders.NMTID
