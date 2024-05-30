@@ -1,3 +1,7 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0
+
 plugins {
   alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.androidLibrary)
@@ -7,6 +11,8 @@ plugins {
 group = "github.hua0512.ncm"
 version = "0.1.0-SNAPSHOT"
 
+val targetJvmVersion = JvmTarget.JVM_11
+
 kotlin {
   // JVM
   jvm()
@@ -14,7 +20,7 @@ kotlin {
   // Android
   androidTarget {
     compilations.all {
-      kotlinOptions.jvmTarget = "11"
+      kotlinOptions.jvmTarget = targetJvmVersion.target
     }
     publishLibraryVariants("release", "debug")
   }
@@ -62,10 +68,31 @@ android {
   namespace = "github.hua0512.ncm.apis"
   compileSdk = libs.versions.android.compileSdk.get().toInt()
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.toVersion(targetJvmVersion.target)
+    targetCompatibility = JavaVersion.toVersion(targetJvmVersion.target)
   }
   defaultConfig {
     minSdk = libs.versions.android.minSdk.get().toInt()
+  }
+}
+
+kotlin {
+  @OptIn(ExperimentalKotlinGradlePluginApi::class)
+  compilerOptions {
+    optIn.addAll(
+      "kotlin.RequiresOptIn",
+      "kotlin.ExperimentalStdlibApi",
+      "kotlinx.serialization.ExperimentalSerialization",
+      "kotlinx.coroutines.ExperimentalCoroutinesApi",
+    )
+    freeCompilerArgs.addAll(
+      "-Xexpect-actual-classes",
+      "-Xno-call-assertions",
+      "-Xno-param-assertions",
+      "-Xno-receiver-assertions",
+    )
+    progressiveMode = true
+    apiVersion.set(KOTLIN_2_0)
+    jvmToolchain(targetJvmVersion.target.toInt())
   }
 }
