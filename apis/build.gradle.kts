@@ -8,23 +8,20 @@ group = "github.hua0512.ncm"
 version = "0.1.0-SNAPSHOT"
 
 kotlin {
+  // JVM
+  jvm()
+
+  // Android
   androidTarget {
     compilations.all {
-      kotlinOptions {
-        jvmTarget = "11"
-      }
+      kotlinOptions.jvmTarget = "11"
     }
-  }
-
-  jvm()
-  androidTarget() {
     publishLibraryVariants("release", "debug")
   }
-  listOf(
-    iosX64(),
-    iosArm64(),
-    iosSimulatorArm64()
-  ).forEach { iosTarget ->
+
+  // iOS
+  val iosTargets = listOf(iosX64(), iosArm64(), iosSimulatorArm64())
+  iosTargets.forEach { iosTarget ->
     iosTarget.binaries.framework {
       baseName = "Shared"
       isStatic = true

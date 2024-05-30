@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalStdlibApi::class)
+
 import github.hua0512.ncm.utils.eapiEncrypt
 import github.hua0512.ncm.utils.encryption.AESMode
 import github.hua0512.ncm.utils.encryption.AESPadding

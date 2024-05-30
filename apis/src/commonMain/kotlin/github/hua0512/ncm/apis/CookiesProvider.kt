@@ -22,16 +22,16 @@ object CookiesProvider {
   }
 
   private fun parseServerSetCookieHeader() {
-    val cookies = CookiesProvider::class.java.getResource("/cookies")?.readText() ?: return
-    parseServerSetCookieHeader(cookies).also {
-      val extensions = it.extensions
-      cookiesMap[it.name] = it.value
-//            cookiesList.add(Cookie(it.name, it.value, it.encoding, it.maxAge, it.expires, it.domain, it.path, it.secure, it.httpOnly))
-      extensions.forEach { (t, u) ->
-        cookiesMap[t] = u ?: ""
-//                cookiesList.add(Cookie(t, u ?: "", it.encoding, it.maxAge, it.expires, it.domain, it.path, it.secure, it.httpOnly))
-      }
-    }
+//    val cookies = CookiesProvider::class.java.getResource("/cookies")?.readText() ?: return
+//    parseServerSetCookieHeader(cookies).also {
+//      val extensions = it.extensions
+//      cookiesMap[it.name] = it.value
+////            cookiesList.add(Cookie(it.name, it.value, it.encoding, it.maxAge, it.expires, it.domain, it.path, it.secure, it.httpOnly))
+//      extensions.forEach { (t, u) ->
+//        cookiesMap[t] = u ?: ""
+////                cookiesList.add(Cookie(t, u ?: "", it.encoding, it.maxAge, it.expires, it.domain, it.path, it.secure, it.httpOnly))
+//      }
+//    }
   }
 
 
@@ -49,7 +49,7 @@ object CookiesProvider {
   }
 
   open fun addIfNotExists(key: String, value: String) {
-    cookiesMap.putIfAbsent(key, value)
+//    cookiesMap.putIfAbsent(key, value)
   }
 
   open fun updateCookie(key: String, value: String) {

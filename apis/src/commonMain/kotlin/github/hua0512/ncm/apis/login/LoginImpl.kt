@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalStdlibApi::class)
+
 package github.hua0512.ncm.apis.login
 
 import github.hua0512.ncm.apis.base.BaseNeteaseNetworkImpl
